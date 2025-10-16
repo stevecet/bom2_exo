@@ -27,7 +27,7 @@ export class LoginPage {
     ca.verifyElementIsVisible(this.popup_field_identifier)
   }
 
-  checkTextError(value){
+  checkText(value){
     ca.verifyWebElementIsVisible(value)
   }
 }

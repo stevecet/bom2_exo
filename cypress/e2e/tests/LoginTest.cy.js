@@ -42,11 +42,11 @@ describe("Login Page", () => {
   it("Verify Failed Login for empty username field", () => {
     loginPage.enterPassword(userData.password);
     loginPage.clickOnSignIn();
-    loginPage.checkTextError(loginData.validation_messages.invalid_username);
+    loginPage.checkText(loginData.validation_messages.invalid_username);
   });
   it("Verify Failed Login empty password field", () => {
     loginPage.enterUsername(userData.username);
     loginPage.clickOnSignIn();
-    loginPage.checkTextError(loginData.validation_messages.invalid_password);
+    loginPage.checkText(loginData.validation_messages.invalid_password);
   });
 });

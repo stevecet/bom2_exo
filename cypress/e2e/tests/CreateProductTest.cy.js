@@ -1,24 +1,32 @@
 import { ProductPage } from "../pages/ProductPage";
+import { Authenticator } from "../actions/Authenticator";
 
+const auth = new Authenticator();
 const productPage = new ProductPage();
 const product_data_path = "product/product.json";
-
+const user_data_path = "user/user.json";
 describe("Login Page", () => {
   let productData = null;
+  let userData = null;
   before(() => {
     cy.fixture(product_data_path).then((data) => {
       productData = data;
     });
+    cy.fixture(user_data_path).then((data) => {
+      userData = data;
+    });
   });
   beforeEach(() => {
-    cy.visit("product/create");
+    auth.Authenticate(userData);
+    cy.visit("/product/create");
   });
   it.only("Verify Product creation page is available", () => {
-    productPage.enterProductName(productData.product_name);
-    productPage.enterPrice(productData.price);
-    productPage.enterReference(productData.reference);
-    productPage.enterDescription(productData.description);
+    productPage.enterProductName(productData.product_data.product_name);
+    productPage.enterPrice(productData.product_data.price);
+    productPage.enterReference(productData.product_data.reference);
+    productPage.enterDescription(productData.product_data.description);
     productPage.clickOnSave();
+    productPage.checkText(productData.messages.successful_creation);
   });
   it("Verify Create Product with correct and basic(required) information works", () => {});
   it("Verify Create Product with no provided information does not work", () => {});

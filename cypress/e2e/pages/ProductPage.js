@@ -53,7 +53,7 @@ export class ProductPage {
 //     ca.verifyElementIsVisible(this.popup_field_identifier);
 //   }
 
-//   checkTextError(value) {
-//     ca.verifyWebElementIsVisible(value);
-//   }
+  checkText(value) {
+    ca.verifyWebElementIsVisible(value);
+  }
 }
