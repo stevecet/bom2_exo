@@ -1,4 +1,4 @@
 {
-  "opsAdmin": "test.opadmin",
-  "opsAdminPassword": "demo"
+  "username": "QA_Steve_Admin",
+  "password": "Steve@1234"
 }
