@@ -1,0 +1,10 @@
+{
+  "incorrect_data": {
+    "username": "steve",
+    "password": "2376791234"
+  },
+  "validation_messages": {
+    "invalid_username": "username is required",
+    "invalid_password": "password is required"
+  }
+}
