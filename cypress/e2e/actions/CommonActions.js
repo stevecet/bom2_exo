@@ -1,7 +1,8 @@
 export class CommonActions {
+  storedUrl = "";
   // enter value into a field
-  enterValueInfield(webelement_identifier, value) {
-    cy.get(webelement_identifier).type(value);
+  enterValueInfield(webelement_identifier, expectedValue) {
+    cy.get(webelement_identifier).clear().type(expectedValue);
   }
 
   //Verify logged user is the current user
@@ -78,7 +79,19 @@ export class CommonActions {
   }
 
   visitUrl(webelement_identifier) {
-    const expectedValue = cy.get(webelement_identifier);
-    cy.visit(expectedValue);
+    cy.get(webelement_identifier).as("links");
+    // cy.get("@links").first().click();
+    cy.get("@links")
+      .first()
+      .then((url) => {
+        this.storedUrl = url;
+      });
+    cy.writeFile("cypress/fixtures/payment/url.json", {
+      url: this.storedUrl,
+    });
+  }
+
+  selectPayment(webelement_identifier) {
+    cy.get(webelement_identifier).click();
   }
 }

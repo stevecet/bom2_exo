@@ -6,7 +6,8 @@ export class LoginPage {
   username_field_identifier = '[name="username"]';
   password_field_identifier = '[name="password"]';
   button_field_identifier = '[type="submit"]';
-  popup_field_identifier = 'div.MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation6.MuiSnackbarContent-root.RaNotification-error.css-mwttsk';
+  popup_field_identifier =
+    "div.MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation6.MuiSnackbarContent-root.RaNotification-error.css-mwttsk";
 
   enterUsername(value) {
     ca.enterValueInfield(this.username_field_identifier, value);
@@ -23,11 +24,11 @@ export class LoginPage {
   checkUser(value) {
     ca.verifyUsername(this.username_field_identifier, value);
   }
-  checkLoginError(){
-    ca.verifyWebElementIsVisible(this.popup_field_identifier)
+  checkLoginError() {
+    ca.verifyWebElementIsVisible(this.popup_field_identifier);
   }
 
-  checkText(value){
-    ca.verifyElementIsVisible(value)
+  checkText(value) {
+    ca.verifyElementIsVisible(value);
   }
 }
