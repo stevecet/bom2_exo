@@ -7,7 +7,7 @@ export class PaymentPage {
   add_quantity_identifier = "span.plus";
   reduce_quantity_identifier = "span.minus";
   quantity_field_identifier = '[name="productQuantity"]';
-  momo_button_identifier = 'div.styles_paymentMethodItemCard__lUuMv';
+  momo_button_identifier = 'div.col-3:nth-of-type(2)';
   om_button_identifier = "div.col-3:nth-of-type(2)";
   eu_button_identifier = "div:nth-of-type(3)";
   phone_number_identifier = '[data-cy="input"]';
