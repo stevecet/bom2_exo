@@ -1,11 +1,17 @@
 {
   "product_data": {
-    "product_name": "Keyboard",
-    "price": "2500",
-    "reference": "Hp 2000",
-    "description": "Hp Keyboard"
+    "product_name": "Mouse",
+    "price": "1500",
+    "reference": "Hp 1000",
+    "description": "Hp MOuse",
+    "quantity": "5"
   },
   "messages": {
-    "successful_creation": "Created Product"
-  }
+    "successful_creation": "Created Product",
+    "unsuccessful_creation": "The form is not valid. Please check for errors",
+    "price_error": "Price of a product must not be less than 100 FCFA",
+    "quantity_error": "This value should be greater than or equal to -1."
+  },
+  "filepath": "cypress/fixtures/files/",
+  "invalid_file": "The file you are trying to upload has an unsupported file format. Only files of the type .pdf .docx .jpeg .png .gif can be uploaded."
 }

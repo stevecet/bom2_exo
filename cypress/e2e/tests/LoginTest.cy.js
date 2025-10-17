@@ -6,7 +6,7 @@ const dashboardPage = new DashboardPage();
 const user_data_path = "user/user.json";
 const login_data_path = "login/login.json";
 
-describe("Login Page", () => {
+describe("Login Test", () => {
   let userData = null;
   let loginData = null;
   before(() => {

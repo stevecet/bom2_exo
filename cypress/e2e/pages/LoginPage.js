@@ -21,13 +21,13 @@ export class LoginPage {
     cy.wait(1000);
   }
   checkUser(value) {
-    ca.verifyUsername(this.dashboard_username_field_identifier, value);
+    ca.verifyUsername(this.username_field_identifier, value);
   }
   checkLoginError(){
-    ca.verifyElementIsVisible(this.popup_field_identifier)
+    ca.verifyWebElementIsVisible(this.popup_field_identifier)
   }
 
   checkText(value){
-    ca.verifyWebElementIsVisible(value)
+    ca.verifyElementIsVisible(value)
   }
 }
