@@ -70,18 +70,6 @@ export class CommonActions {
     });
   }
 
-  //checks if total amount displays price * quantity
-  // checkTotalAmountProduct(
-  //   webelement_identifier,
-  //   expectedValue1,
-  //   expectedValue2
-  // ) {
-  //   cy.get(webelement_identifier).should(
-  //     "have.value",
-  //     expectedValue1 * expectedValue2
-  //   );
-  // }
-
   //visit a url and save it in a fixture
   clickUrl(webelement_identifier) {
     cy.get(webelement_identifier).click();

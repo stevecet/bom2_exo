@@ -99,16 +99,19 @@ export class ProductPage {
   checkOnlyValidFileLoads() {
     ca.verifyCorrectElementLoads(this.file_identifier);
   }
-
-  // checkTotalAmount(pricevalue, quantityvalue) {
-  //   ca.checkTotalAmountProduct(
-  //     this.total_field_identifier,
-  //     pricevalue,
-  //     quantityvalue
-  //   );
-  // }
-
   visitPrl() {
     ca.clickUrl(this.link_identifier);
+  }
+
+  newProduct(data) {
+    cy.visit("product/create");
+    this.enterProductName(data.product_data.product_name);
+    this.enterPrice(data.product_data.price);
+    this.enterReference(data.product_data.reference);
+    this.enterDescription(data.product_data.description);
+    this.expandAccordion();
+    this.enterQuantity(data.product_data.quantity);
+    this.clickOnSave();
+    this.visitPrl();
   }
 }

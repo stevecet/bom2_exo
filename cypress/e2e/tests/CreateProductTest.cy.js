@@ -9,14 +9,17 @@ describe("Create Product Tests", () => {
   let productData = null;
   let userData = null;
   before(() => {
+    //load products from product fixture
     cy.fixture(product_data_path).then((data) => {
       productData = data;
     });
+    //load user from user fixture
     cy.fixture(user_data_path).then((data) => {
       userData = data;
     });
   });
   beforeEach(() => {
+    //authenticate before each test case and navigating to the product creation page
     auth.Authenticate(userData);
     cy.visit("/product/create");
   });
@@ -76,22 +79,22 @@ describe("Create Product Tests", () => {
   });
   it("Verify adding Attachment works", () => {
     productPage.expandAccordion();
-    productPage.addAttachment(`${productData.filepath}valid_file_2.png`);
+    productPage.addAttachment(productData.files.valid_file_2);
     productPage.checkFileHasBeenLoaded();
   });
   it("Verify 'Attachment' takes only supported extensions", () => {
     productPage.expandAccordion();
-    productPage.addAttachment(`${productData.filepath}invalid_file_1.pptx`);
+    productPage.addAttachment(productData.files.invalid_file_1);
     productPage.checkFileHasNotBeenLoaded();
   });
-  it.only("Verify user inputs only 5 max Attachements", () => {
+  it("Verify user inputs only 5 max Attachements", () => {
     productPage.expandAccordion();
-    productPage.addAttachment(`${productData.filepath}valid_file_2.png`);
-    productPage.addAttachment(`${productData.filepath}valid_file_2.png`);
-    productPage.addAttachment(`${productData.filepath}valid_file_2.png`);
-    productPage.addAttachment(`${productData.filepath}valid_file_2.png`);
-    productPage.addAttachment(`${productData.filepath}valid_file_2.png`);
-    productPage.addAttachment(`${productData.filepath}valid_file_2.png`);
+    productPage.addAttachment(productData.files.valid_file_2);
+    productPage.addAttachment(productData.files.valid_file_2);
+    productPage.addAttachment(productData.files.valid_file_2);
+    productPage.addAttachment(productData.files.valid_file_2);
+    productPage.addAttachment(productData.files.valid_file_2);
+    productPage.addAttachment(productData.files.valid_file_2);
     productPage.checkOnlyFiveFilesHaveBeenLoaded();
   });
 });

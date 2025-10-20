@@ -12,6 +12,12 @@
     "price_error": "Price of a product must not be less than 100 FCFA",
     "quantity_error": "This value should be greater than or equal to -1."
   },
+  "files": {
+    "invalid_file_1": "cypress/fixtures/files/invalid_file_1.pptx",
+    "invalid_file_2": "cypress/fixtures/files/invalid_file_2.jpg",
+    "valid_file_1": "cypress/fixtures/files/valid_file_1.csv",
+    "valid_file_2": "cypress/fixtures/files/valid_file_2.png"
+  },
   "filepath": "cypress/fixtures/files/",
   "invalid_file": "The file you are trying to upload has an unsupported file format. Only files of the type .pdf .docx .jpeg .png .gif can be uploaded."
 }

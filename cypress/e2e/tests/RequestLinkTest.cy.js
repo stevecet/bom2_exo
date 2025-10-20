@@ -1,9 +1,9 @@
 //Testing PRL using url generated from the product creation, saved and loaded from the fixture and asserted using cy.origin()
 
 import { Authenticator } from "../actions/Authenticator";
-import { CreateProduct } from "../actions/CreateProduct";
+import { ProductPage } from "../pages/ProductPage";
 const auth = new Authenticator();
-const createProduct = new CreateProduct();
+const createProduct = new ProductPage();
 const product_data_path = "product/product.json";
 const user_data_path = "user/user.json";
 const payment_data_path = "payment/payment.json";
@@ -15,22 +15,30 @@ describe("Payment Request Link Test", () => {
   let paymentData = null;
   let paymentLink = null;
   before(() => {
+    //load user data from use fixture and use it to Authenticate
     cy.fixture(user_data_path).then((data) => {
       userData = data;
       auth.Authenticate(userData);
     });
+
+    //load product data from fixture and create a product with it
     cy.fixture(product_data_path).then((data) => {
       productData = data;
-      createProduct.NewProduct(productData);
+      createProduct.newProduct(productData);
     });
+    //load data to fill payment forms
     cy.fixture(payment_data_path).then((data) => {
       paymentData = data;
     });
+
+    //load dynamically saved url from the fixture
     cy.fixture(paymenturl_data_path).then((data) => {
       paymentLink = data;
     });
   });
   it("Verify user can make payment", () => {
+    //cy.origin() to perform test on domain different from the base domain with the domain as first parameter
+    //Pass all data as args and import any fonction within the origin context as origin can't communicate with data declared outside its scope
     cy.origin(paymentLink.url, { args: { paymentData } }, ({ paymentData }) => {
       const { PaymentPage } = Cypress.require("../pages/PaymentPage");
       const paymentPage = new PaymentPage();
@@ -51,6 +59,7 @@ describe("Payment Request Link Test", () => {
     cy.origin(paymentLink.url, { args: { paymentData } }, ({ paymentData }) => {
       const { PaymentPage } = Cypress.require("../pages/PaymentPage");
       const paymentPage = new PaymentPage();
+      //visit / to reset the test from its previous state
       cy.visit("/");
       paymentPage.enterQuantity(paymentData.payment_details.quantity);
       paymentPage.reduceQuantity();
