@@ -78,10 +78,18 @@ export class CommonActions {
     );
   }
 
+  clickUrl(webelement_identifier) {
+    cy.get(webelement_identifier).click();
+    // paymentPage.visitPrl();
+    cy.url().then((url) => {
+      cy.writeFile("cypress/fixtures/payment/url.json", {
+        url: url,
+      });
+    }); 
+  }
+
   visitUrl(webelement_identifier) {
-    cy.get(webelement_identifier).as("links");
-    // cy.get("@links").first().click();
-    cy.get("@links")
+    cy.get(webelement_identifier)
       .first()
       .then((url) => {
         this.storedUrl = url;

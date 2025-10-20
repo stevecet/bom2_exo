@@ -17,8 +17,8 @@ export class ProductPage {
     "p.MuiFormHelperText-root.Mui-error.MuiFormHelperText-sizeMedium.MuiFormHelperText-contained.css-15oklmi";
   accordion_field_identifier =
     "div.MuiButtonBase-root.MuiAccordionSummary-root.MuiAccordionSummary-gutters.css-1d7s89y";
-  link_identifier =
-    "a.MuiTypography-root.MuiTypography-inherit.MuiTypography-noWrap.MuiLink-root.MuiLink-underlineAlways.css-12u3292";
+  link_identifier = '[data-testid="Paper-testid"] a.css-12u3292';
+  // "a.MuiTypography-root.MuiTypography-inherit.MuiTypography-noWrap.MuiLink-root.MuiLink-underlineAlways.css-12u3292";
 
   //Methods for the product page
   enterProductName(value) {
@@ -125,6 +125,6 @@ export class ProductPage {
   }
 
   visitPrl() {
-    ca.visitUrl(this.link_identifier);
+    ca.clickUrl(this.link_identifier);
   }
 }

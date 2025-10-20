@@ -9,7 +9,9 @@ export class CreateProduct {
     productPage.enterPrice(data.product_data.price);
     productPage.enterReference(data.product_data.reference);
     productPage.enterDescription(data.product_data.description);
+    productPage.expandAccordion();
+    productPage.enterQuantity(data.product_data.quantity);
     productPage.clickOnSave();
-    // productPage.visitPrl()
+    productPage.visitPrl();
   }
 }

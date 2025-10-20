@@ -5,6 +5,7 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    baseUrl:"https://adminbom.smobilpay.integration.maviance.info/"
+    baseUrl: "https://adminbom.smobilpay.integration.maviance.info/",
+    experimentalOriginDependencies: true,
   },
 });

@@ -20,7 +20,7 @@ describe("Payment Request Link Test", () => {
   });
   it("Verify user can make payment", () => {
     paymentPage.enterQuantity(paymentData.payment_details.quantity);
-    paymentPage.omPayment();
+    paymentPage.selectOmPayment();
     paymentPage.enterPhoneNumber(paymentData.payment_details.om_payment_number);
     paymentPage.submitPayment();
     paymentPage.enterName(paymentData.payment_details.name);
