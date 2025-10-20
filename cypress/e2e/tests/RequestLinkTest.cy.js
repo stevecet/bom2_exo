@@ -1,3 +1,5 @@
+//Testing PRL using url generated from the product creation, saved and loaded from the fixture and asserted using cy.origin()
+
 import { Authenticator } from "../actions/Authenticator";
 import { CreateProduct } from "../actions/CreateProduct";
 const auth = new Authenticator();
@@ -42,6 +44,28 @@ describe("Payment Request Link Test", () => {
       paymentPage.enterName(paymentData.payment_details.name);
       paymentPage.submitPayment();
       paymentPage.confirmPayment();
+    });
+  });
+
+  it("Check if - button reduces the quantity", () => {
+    cy.origin(paymentLink.url, { args: { paymentData } }, ({ paymentData }) => {
+      const { PaymentPage } = Cypress.require("../pages/PaymentPage");
+      const paymentPage = new PaymentPage();
+      cy.visit("/");
+      paymentPage.enterQuantity(paymentData.payment_details.quantity);
+      paymentPage.reduceQuantity();
+      paymentPage.checkQuantity(paymentData.payment_details.reduced_quantity);
+    });
+  });
+
+  it("Check if + button increases the quantity", () => {
+    cy.origin(paymentLink.url, { args: { paymentData } }, ({ paymentData }) => {
+      const { PaymentPage } = Cypress.require("../pages/PaymentPage");
+      const paymentPage = new PaymentPage();
+      cy.visit("/");
+      paymentPage.enterQuantity(paymentData.payment_details.quantity);
+      paymentPage.addQuantity();
+      paymentPage.checkQuantity(paymentData.payment_details.added_quantity);
     });
   });
 

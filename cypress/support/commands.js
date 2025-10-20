@@ -23,3 +23,9 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+// Cypress.Commands.add("corslink", (paymentData, paymentLink) => {
+//   cy.origin(paymentLink.url, { args: { paymentData } }, ({ paymentData }) => {
+//     const { PaymentPage } = Cypress.require("../pages/PaymentPage");
+//     const paymentPage = new PaymentPage();
+//   });
+// });

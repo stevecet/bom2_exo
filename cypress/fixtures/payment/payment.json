@@ -3,7 +3,9 @@
     "name": "John Doe",
     "om_payment_number": "659090107",
     "momo_payment_number": "679090107",
-    "quantity": "1",
+    "quantity": "3",
+    "added_quantity": "4",
+    "reduced_quantity": "2",
     "unavailable_quantity": "10",
     "quantity_error_message": "La quantité sélectionnée n'est pas disponible",
     "number_error_message": "Entrer un numéro mobile money valide"

@@ -2,6 +2,7 @@ import { CommonActions } from "../actions/CommonActions";
 const ca = new CommonActions();
 
 export class PaymentPage {
+  //Web elements identifiers for the payment page
   link_identifier =
     "a.MuiTypography-root.MuiTypography-inherit.MuiTypography-noWrap.MuiLink-root.MuiLink-underlineAlways.css-12u3292";
   add_quantity_identifier = "span.plus";
@@ -25,6 +26,9 @@ export class PaymentPage {
   }
   reduceQuantity() {
     ca.clickOnWebElement(this.reduce_quantity_identifier);
+  }
+  checkQuantity(value) {
+    ca.verifyIncrement(this.quantity_field_identifier, value);
   }
   enterQuantity(value) {
     ca.enterValueInfield(this.quantity_field_identifier, value);

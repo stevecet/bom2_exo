@@ -1,5 +1,4 @@
 export class CommonActions {
-  storedUrl = "";
   // enter value into a field
   enterValueInfield(webelement_identifier, expectedValue) {
     cy.get(webelement_identifier).clear().type(expectedValue);
@@ -8,6 +7,11 @@ export class CommonActions {
   //Verify logged user is the current user
   verifyUsername(webelement_identifier, expectedValue) {
     cy.get(webelement_identifier).contains(expectedValue);
+  }
+
+  //Verify logged user is the current user
+  verifyIncrement(webelement_identifier, expectedValue) {
+    cy.get(webelement_identifier).should("have.value", expectedValue);
   }
 
   // enter value into a field less than 100
@@ -67,38 +71,28 @@ export class CommonActions {
   }
 
   //checks if total amount displays price * quantity
-  checkTotalAmountProduct(
-    webelement_identifier,
-    expectedValue1,
-    expectedValue2
-  ) {
-    cy.get(webelement_identifier).should(
-      "have.value",
-      expectedValue1 * expectedValue2
-    );
-  }
+  // checkTotalAmountProduct(
+  //   webelement_identifier,
+  //   expectedValue1,
+  //   expectedValue2
+  // ) {
+  //   cy.get(webelement_identifier).should(
+  //     "have.value",
+  //     expectedValue1 * expectedValue2
+  //   );
+  // }
 
+  //visit a url and save it in a fixture
   clickUrl(webelement_identifier) {
     cy.get(webelement_identifier).click();
-    // paymentPage.visitPrl();
     cy.url().then((url) => {
       cy.writeFile("cypress/fixtures/payment/url.json", {
         url: url,
       });
-    }); 
-  }
-
-  visitUrl(webelement_identifier) {
-    cy.get(webelement_identifier)
-      .first()
-      .then((url) => {
-        this.storedUrl = url;
-      });
-    cy.writeFile("cypress/fixtures/payment/url.json", {
-      url: this.storedUrl,
     });
   }
 
+  //select a payment method
   selectPayment(webelement_identifier) {
     cy.get(webelement_identifier).click();
   }

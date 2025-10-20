@@ -21,13 +21,16 @@ export class LoginPage {
     ca.clickOnWebElement(this.button_field_identifier);
     cy.wait(1000);
   }
+
+  //Checks the user is well authenticated
   checkUser(value) {
     ca.verifyUsername(this.username_field_identifier, value);
   }
+
   checkLoginError() {
     ca.verifyWebElementIsVisible(this.popup_field_identifier);
   }
-
+  
   checkText(value) {
     ca.verifyElementIsVisible(value);
   }

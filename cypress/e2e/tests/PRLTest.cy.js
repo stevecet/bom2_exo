@@ -1,3 +1,5 @@
+//Testing PRL using url saved in the fixture
+
 import { PaymentPage } from "../pages/PaymentPage";
 
 const paymentPage = new PaymentPage();
@@ -27,6 +29,17 @@ describe("Payment Request Link Test", () => {
     paymentPage.submitPayment();
     paymentPage.confirmPayment();
   });
+  it("Check if - button reduces the quantity", () => {
+    paymentPage.enterQuantity(paymentData.payment_details.quantity);
+    paymentPage.reduceQuantity();
+    paymentPage.checkQuantity(paymentData.payment_details.reduced_quantity);
+  });
+
+  it("Check if + button increases the quantity", () => {
+    paymentPage.enterQuantity(paymentData.payment_details.quantity);
+    paymentPage.addQuantity();
+    paymentPage.checkQuantity(paymentData.payment_details.added_quantity);
+  });
 
   it("Verify user can select more than available quantity", () => {
     paymentPage.enterQuantity(paymentData.payment_details.unavailable_quantity);
@@ -35,14 +48,14 @@ describe("Payment Request Link Test", () => {
     );
   });
 
-  it.only("Verify MTN Mobile money accepts only MTN phone numbers", () => {
+  it("Verify MTN Mobile money accepts only MTN phone numbers", () => {
     paymentPage.selectMomoPayment();
     paymentPage.enterPhoneNumber(paymentData.payment_details.om_payment_number);
     paymentPage.checkNumberError(
       paymentData.payment_details.number_error_message
     );
   });
-  it.only("Verify Orange Money accepts only Orange phone numbers", () => {
+  it("Verify Orange Money accepts only Orange phone numbers", () => {
     paymentPage.selectOmPayment();
     paymentPage.enterPhoneNumber(
       paymentData.payment_details.momo_payment_number

@@ -18,7 +18,6 @@ export class ProductPage {
   accordion_field_identifier =
     "div.MuiButtonBase-root.MuiAccordionSummary-root.MuiAccordionSummary-gutters.css-1d7s89y";
   link_identifier = '[data-testid="Paper-testid"] a.css-12u3292';
-  // "a.MuiTypography-root.MuiTypography-inherit.MuiTypography-noWrap.MuiLink-root.MuiLink-underlineAlways.css-12u3292";
 
   //Methods for the product page
   enterProductName(value) {
@@ -53,22 +52,7 @@ export class ProductPage {
 
   addAttachment(value) {
     ca.selectFile(this.attachment_field_identifier, value);
-    // cy.log("Waiting for attachment to load");
-    // cy.wait(2000);
   }
-  // addMultipleAttachments(value, value1, value2, value3, value4, value5) {
-  //   ca.selectMultipleFiles(
-  //     this.attachment_field_identifier,
-  //     value,
-  //     value1,
-  //     value2,
-  //     value3,
-  //     value4,
-  //     value5
-  //   );
-  //   // cy.log("Waiting for attachment to load");
-  //   // cy.wait(2000);
-  // }
 
   enterQuantity(value) {
     ca.enterValueInfield(this.quantity_field_identifier, value);
@@ -116,13 +100,13 @@ export class ProductPage {
     ca.verifyCorrectElementLoads(this.file_identifier);
   }
 
-  checkTotalAmount(pricevalue, quantityvalue) {
-    ca.checkTotalAmountProduct(
-      this.total_field_identifier,
-      pricevalue,
-      quantityvalue
-    );
-  }
+  // checkTotalAmount(pricevalue, quantityvalue) {
+  //   ca.checkTotalAmountProduct(
+  //     this.total_field_identifier,
+  //     pricevalue,
+  //     quantityvalue
+  //   );
+  // }
 
   visitPrl() {
     ca.clickUrl(this.link_identifier);

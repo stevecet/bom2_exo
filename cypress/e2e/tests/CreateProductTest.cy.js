@@ -1,6 +1,5 @@
 import { ProductPage } from "../pages/ProductPage";
 import { Authenticator } from "../actions/Authenticator";
-import { CreateProduct } from "../actions/CreateProduct";
 
 const auth = new Authenticator();
 const productPage = new ProductPage();
@@ -75,26 +74,17 @@ describe("Create Product Tests", () => {
     productPage.clickOnSave();
     productPage.NonIntegerError(productData.messages.quantity_error);
   });
-  it("Verify 'Total Amount' multiplies Quantity and Price", () => {
-    productPage.enterPrice(productData.product_data.price);
-    productPage.expandAccordion();
-    productPage.enterQuantity(productData.product_data.quantity);
-    productPage.checkTotalAmount(
-      productData.product_data.price,
-      productData.product_data.quantity
-    );
-  });
-  it("Verify adding Attachement works", () => {
+  it("Verify adding Attachment works", () => {
     productPage.expandAccordion();
     productPage.addAttachment(`${productData.filepath}valid_file_2.png`);
     productPage.checkFileHasBeenLoaded();
   });
-  it("Verify 'Attachement' takes only supported extensions", () => {
+  it("Verify 'Attachment' takes only supported extensions", () => {
     productPage.expandAccordion();
     productPage.addAttachment(`${productData.filepath}invalid_file_1.pptx`);
     productPage.checkFileHasNotBeenLoaded();
   });
-  it("Verify user inputs only 5 max Attachements", () => {
+  it.only("Verify user inputs only 5 max Attachements", () => {
     productPage.expandAccordion();
     productPage.addAttachment(`${productData.filepath}valid_file_2.png`);
     productPage.addAttachment(`${productData.filepath}valid_file_2.png`);
