@@ -7,9 +7,11 @@ export class PaymentPage {
   add_quantity_identifier = "span.plus";
   reduce_quantity_identifier = "span.minus";
   quantity_field_identifier = '[name="productQuantity"]';
-  momo_button_identifier = 'div.col-3:nth-of-type(2)';
+  momo_button_identifier =
+    'div.col-3:nth-of-type(1) [data-testid="payment-method-picker-item"] div.styles_paymentMethodItemCard__lUuMv';
   om_button_identifier = "div.col-3:nth-of-type(2)";
-  eu_button_identifier = "div:nth-of-type(3)";
+  eu_button_identifier =
+    'div:nth-of-type(3) [data-testid="payment-method-picker-item"] div.styles_paymentMethodItemCard__lUuMv';
   phone_number_identifier = '[data-cy="input"]';
   submit_button_identifier = '[data-testid="submit-button"]';
   confirm_button_identifier = '[data-testid="payment-confirmation-btn"]';
@@ -27,10 +29,10 @@ export class PaymentPage {
   enterQuantity(value) {
     ca.enterValueInfield(this.quantity_field_identifier, value);
   }
-  omPayment() {
+  selectOmPayment() {
     ca.selectPayment(this.om_button_identifier);
   }
-  momoPayment() {
+  selectMomoPayment() {
     ca.selectPayment(this.momo_button_identifier);
   }
   euPayment() {
@@ -42,7 +44,6 @@ export class PaymentPage {
   enterName(value) {
     ca.enterValueInfield(this.name_field_identifier, value);
   }
-  checkPhoneNumber(value) {}
 
   submitPayment() {
     ca.clickOnWebElement(this.submit_button_identifier);

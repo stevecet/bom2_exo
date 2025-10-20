@@ -30,17 +30,25 @@ describe("Payment Request Link Test", () => {
 
   it("Verify user can select more than available quantity", () => {
     paymentPage.enterQuantity(paymentData.payment_details.unavailable_quantity);
-    paymentPage.checkQuantityError(paymentData.payment_details.quantity_error_message)
+    paymentPage.checkQuantityError(
+      paymentData.payment_details.quantity_error_message
+    );
   });
 
-  it("Verify MTN Mobile money accepts only MTN phone numbers", () => {
-    paymentPage.momoPayment();  
+  it.only("Verify MTN Mobile money accepts only MTN phone numbers", () => {
+    paymentPage.selectMomoPayment();
     paymentPage.enterPhoneNumber(paymentData.payment_details.om_payment_number);
-    paymentPage.checkNumberError(paymentData.payment_details.number_error_message)
+    paymentPage.checkNumberError(
+      paymentData.payment_details.number_error_message
+    );
   });
-  it("Verify Orange Money accepts only Orange phone numbers", () => {
-    paymentPage.omPayment();  
-    paymentPage.enterPhoneNumber(paymentData.payment_details.momo_payment_number);
-    paymentPage.checkNumberError(paymentData.payment_details.number_error_message)
+  it.only("Verify Orange Money accepts only Orange phone numbers", () => {
+    paymentPage.selectOmPayment();
+    paymentPage.enterPhoneNumber(
+      paymentData.payment_details.momo_payment_number
+    );
+    paymentPage.checkNumberError(
+      paymentData.payment_details.number_error_message
+    );
   });
 });
